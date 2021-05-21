@@ -91,6 +91,7 @@ class Encryption
     {
         $this->adapter = $adapter ? $adapter : new OpenSSL([]);
         $this->initVectorSize = $this->adapter->getIVSize();
+        $this->setSecret('');
     }
 
     /**

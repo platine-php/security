@@ -67,7 +67,7 @@ class OpenSSL implements AdapterInterface
      * OpenSSL input/output option constant
      * @var int
      */
-    protected int $option;
+    protected int $option = OPENSSL_RAW_DATA;
 
 
     /**
@@ -189,7 +189,7 @@ class OpenSSL implements AdapterInterface
                 'Error occured when get the initialization vector size'
             );
         }
-        
+
         return $size;
     }
 }
