@@ -87,9 +87,8 @@ class OpenSSL implements AdapterInterface
             $cipher = $config['cipher'];
             if (!in_array($cipher, openssl_get_cipher_methods())) {
                 throw new EncryptionException(sprintf(
-                    'Invalid OpenSSL cipher [%s] must be one of [%s]',
-                    $cipher,
-                    implode(', ', openssl_get_cipher_methods())
+                    'Invalid OpenSSL cipher [%s]',
+                    $cipher
                 ));
             } else {
                 $this->cipher = $cipher;
