@@ -144,11 +144,11 @@ class Encryption
      */
     protected function encryptData(string $data): string
     {
-        $iv = $this->adapter->createIV($this->initVectorSize);
-        $encrypted = $iv . $this->adapter->encrypt(
+        $initVector = $this->adapter->createIV($this->initVectorSize);
+        $encrypted = $initVector . $this->adapter->encrypt(
             $this->hashedSecret,
             $data,
-            $iv
+            $initVector
         );
 
         $cipher = new Cipher($encrypted, $this->hashedSecret);
@@ -175,7 +175,7 @@ class Encryption
             throw new EncryptionException('The encrypted data to decode is invalid');
         }
 
-        $iv = substr($cleanEncrypted, 0, $this->initVectorSize);
+        $initVector = substr($cleanEncrypted, 0, $this->initVectorSize);
 
         $dataEncrypted = substr($cleanEncrypted, $this->initVectorSize);
 
@@ -183,7 +183,7 @@ class Encryption
             $this->adapter->decrypt(
                 $this->hashedSecret,
                 $dataEncrypted,
-                $iv
+                $initVector
             ),
             "\0"
         );

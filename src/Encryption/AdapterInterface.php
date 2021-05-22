@@ -65,26 +65,26 @@ interface AdapterInterface
      * Encrypt the given data
      * @param string $key the secret key
      * @param string $data the data to encrypt
-     * @param string $iv the initialization vector
+     * @param string $initVector the initialization vector
      * @return string the encrypted data
      */
     public function encrypt(
         string $key,
         string $data,
-        string $iv
+        string $initVector
     ): string;
 
     /**
      * Decrypt the given encrypted data
      * @param string $key the secret key
      * @param string $data the data to decrypt
-     * @param string $iv the initialization vector
+     * @param string $initVector the initialization vector
      * @return string the original data
      */
     public function decrypt(
         string $key,
         string $data,
-        string $iv
+        string $initVector
     ): string;
 
     /**

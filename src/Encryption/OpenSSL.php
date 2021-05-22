@@ -132,14 +132,14 @@ class OpenSSL implements AdapterInterface
     /**
      * {@inhereitdoc}
      */
-    public function decrypt(string $key, string $data, string $iv): string
+    public function decrypt(string $key, string $data, string $initVector): string
     {
         $decrypted = openssl_decrypt(
             $data,
             $this->cipher,
             $key,
             $this->option,
-            $iv
+            $initVector
         );
 
         if ($decrypted === false) {
@@ -157,14 +157,14 @@ class OpenSSL implements AdapterInterface
     public function encrypt(
         string $key,
         string $data,
-        string $iv
+        string $initVector
     ): string {
         $encrypted = openssl_encrypt(
             $data,
             $this->cipher,
             $key,
             $this->option,
-            $iv
+            $initVector
         );
 
         if ($encrypted === false) {
