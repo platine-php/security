@@ -38,7 +38,7 @@
  *  @author Platine Developers Team
  *  @copyright  Copyright (c) 2020
  *  @license    http://opensource.org/licenses/MIT  MIT License
- *  @link   http://www.iacademy.cf
+ *  @link   https://www.platine-php.com
  *  @version 1.0.0
  *  @filesource
  */
@@ -47,6 +47,7 @@ declare(strict_types=1);
 
 namespace Platine\Security;
 
+use InvalidArgumentException;
 use Platine\Security\Encryption\AdapterInterface;
 use Platine\Security\Encryption\Cipher;
 use Platine\Security\Encryption\OpenSSL;
@@ -58,7 +59,6 @@ use Platine\Security\Exception\EncryptionException;
  */
 class Encryption
 {
-
     /**
      * The adapter instance
      * @var AdapterInterface
@@ -69,13 +69,13 @@ class Encryption
      * The encryption/decryption secret key
      * @var string
      */
-    protected string $secret;
+    protected string $secret = '';
 
     /**
      * The hashed secret
      * @var string
      */
-    protected string $hashedSecret;
+    protected string $hashedSecret = '';
 
     /**
      * The initialization vector
@@ -91,7 +91,6 @@ class Encryption
     {
         $this->adapter = $adapter ? $adapter : new OpenSSL([]);
         $this->initVectorSize = $this->adapter->getIVSize();
-        $this->setSecret('');
     }
 
     /**
@@ -110,6 +109,9 @@ class Encryption
      */
     public function setSecret(string $secret): self
     {
+        if (empty(trim($secret))) {
+            throw new InvalidArgumentException('The secret can not be empty');
+        }
         $this->secret = $secret;
         $this->hashedSecret = md5($secret);
 

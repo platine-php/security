@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Platine\Test\Security\Encryption;
 
-use Platine\PlatineTestCase;
+use Platine\Dev\PlatineTestCase;
 use Platine\Security\Encryption\Cipher;
 use Platine\Security\Encryption\OpenSSL;
 
@@ -16,7 +16,6 @@ use Platine\Security\Encryption\OpenSSL;
  */
 class CipherTest extends PlatineTestCase
 {
-
     public function testConstructorExtensionNotLoaded(): void
     {
         global $mock_sha1_to_value;

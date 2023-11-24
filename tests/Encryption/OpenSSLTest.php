@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Platine\Test\Security\Encryption;
 
-use Platine\PlatineTestCase;
+use Platine\Dev\PlatineTestCase;
 use Platine\Security\Encryption\OpenSSL;
 use Platine\Security\Exception\EncryptionException;
 use RuntimeException;
@@ -17,7 +17,6 @@ use RuntimeException;
  */
 class OpenSSLTest extends PlatineTestCase
 {
-
     public function testConstructorExtensionNotLoaded(): void
     {
         global $mock_extension_loaded_to_false;

@@ -3,7 +3,7 @@
     "description": "Platine Security provides a complete security system with encryption, hash support.",
     "type": "library",
     "license": "MIT",
-    "keywords": ["application", "translation", "framework", "php", "platine", "language", "i18n", "storage", "localization", "internationalization"],
+    "keywords": ["application", "security", "framework", "php", "platine", "openssl", "hash", "encryption"],
     "authors": [
         {
             "name": "NGUEREZA Tony",
@@ -25,9 +25,9 @@
 	
     "require-dev": {
         "phpmd/phpmd": "@stable",
-        "phpstan/phpstan": "0.12.x-dev",
+        "phpstan/phpstan": "^1.8",
         "phpunit/phpunit": "^9.5",
-        "platine-php/test-tools": "1.0.x-dev",
+        "platine-php/dev": "1.0.x-dev",
         "squizlabs/php_codesniffer": "3.*"
     },
     

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Platine\Test\Security;
 
-use Platine\PlatineTestCase;
+use InvalidArgumentException;
+use Platine\Dev\PlatineTestCase;
 use Platine\Security\Encryption;
 use Platine\Security\Encryption\AdapterInterface;
 use Platine\Security\Encryption\OpenSSL;
@@ -18,7 +19,6 @@ use Platine\Security\Exception\EncryptionException;
  */
 class EncryptionTest extends PlatineTestCase
 {
-
     public function testConstructor(): void
     {
         $adapter = $this->getMockInstance(OpenSSL::class);
@@ -26,6 +26,14 @@ class EncryptionTest extends PlatineTestCase
         $this->assertInstanceOf(Encryption::class, $s);
         $this->assertInstanceOf(AdapterInterface::class, $s->getAdapter());
         $this->assertEquals($s->getAdapter(), $adapter);
+    }
+
+    public function testSetSecretEmpty(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $adapter = $this->getMockInstance(OpenSSL::class);
+        $s = new Encryption($adapter);
+        $s->setSecret('');
     }
 
     public function testSetSecret(): void

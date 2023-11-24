@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Platine\Test\Security\Hash;
 
-use Platine\PlatineTestCase;
+use Platine\Dev\PlatineTestCase;
 use Platine\Security\Exception\HashException;
 use Platine\Security\Hash\BcryptHash;
 
@@ -16,7 +16,6 @@ use Platine\Security\Hash\BcryptHash;
  */
 class BcryptHashTest extends PlatineTestCase
 {
-
     public function testHashSuccess(): void
     {
         global $mock_password_hash_to_value;
