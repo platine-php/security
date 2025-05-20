@@ -48,7 +48,7 @@ declare(strict_types=1);
 namespace Platine\Security\Encryption;
 
 /**
- * Class AdapterInterface
+ * @class AdapterInterface
  * @package Platine\Security\Encryption
  */
 interface AdapterInterface

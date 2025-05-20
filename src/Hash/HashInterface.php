@@ -48,7 +48,7 @@ declare(strict_types=1);
 namespace Platine\Security\Hash;
 
 /**
- * Class HashInterface
+ * @class HashInterface
  * @package Platine\Security\Hash
  */
 interface HashInterface

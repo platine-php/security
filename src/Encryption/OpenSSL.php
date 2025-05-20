@@ -51,7 +51,7 @@ use Platine\Security\Exception\EncryptionException;
 use RuntimeException;
 
 /**
- * Class OpenSSL
+ * @class OpenSSL
  * @package Platine\Security\Encryption
  */
 class OpenSSL implements AdapterInterface

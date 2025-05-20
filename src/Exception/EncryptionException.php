@@ -36,7 +36,7 @@ namespace Platine\Security\Exception;
 use Exception;
 
 /**
- * Class EncryptionException
+ * @class EncryptionException
  * @package Platine\Security\Exception
  */
 class EncryptionException extends Exception

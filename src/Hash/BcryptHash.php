@@ -50,7 +50,7 @@ namespace Platine\Security\Hash;
 use Platine\Security\Exception\HashException;
 
 /**
- * Class BcryptHash
+ * @class BcryptHash
  * @package Platine\Security\Hash
  */
 class BcryptHash implements HashInterface

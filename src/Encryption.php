@@ -54,7 +54,7 @@ use Platine\Security\Encryption\OpenSSL;
 use Platine\Security\Exception\EncryptionException;
 
 /**
- * Class Lang
+ * @class Lang
  * @package Platine\Security
  */
 class Encryption
@@ -87,9 +87,9 @@ class Encryption
      * Create new instance
      * @param AdapterInterface|null $adapter
      */
-    public function __construct(AdapterInterface $adapter = null)
+    public function __construct(?AdapterInterface $adapter = null)
     {
-        $this->adapter = $adapter ? $adapter : new OpenSSL([]);
+        $this->adapter = $adapter ?? new OpenSSL([]);
         $this->initVectorSize = $this->adapter->getIVSize();
     }
 

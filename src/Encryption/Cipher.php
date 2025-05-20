@@ -48,7 +48,7 @@ declare(strict_types=1);
 namespace Platine\Security\Encryption;
 
 /**
- * Class Cipher
+ * @class Cipher
  * @package Platine\Security\Encryption
  */
 class Cipher

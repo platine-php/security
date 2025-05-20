@@ -36,7 +36,7 @@ namespace Platine\Security\Exception;
 use Exception;
 
 /**
- * Class HashException
+ * @class HashException
  * @package Platine\Security\Exception
  */
 class HashException extends Exception
