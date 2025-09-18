@@ -43,10 +43,12 @@ function base64_decode(string $string)
 
 namespace Platine\Security\Encryption;
 
+use Exception;
+
 $mock_extension_loaded_to_false = false;
 $mock_extension_loaded_to_true = false;
 $mock_openssl_get_cipher_methods_to_array = false;
-$mock_openssl_random_pseudo_bytes_to_false = false;
+$mock_openssl_random_pseudo_bytes_to_exception = false;
 $mock_openssl_random_pseudo_bytes_to_value = false;
 $mock_openssl_decrypt_to_false = false;
 $mock_openssl_decrypt_to_value = false;
@@ -118,13 +120,13 @@ function openssl_get_cipher_methods()
 
 function openssl_random_pseudo_bytes(int $length)
 {
-    global $mock_openssl_random_pseudo_bytes_to_false,
+    global $mock_openssl_random_pseudo_bytes_to_exception,
             $mock_openssl_random_pseudo_bytes_to_value;
 
     if ($mock_openssl_random_pseudo_bytes_to_value) {
         return 'abcd';
-    } elseif ($mock_openssl_random_pseudo_bytes_to_false) {
-        return false;
+    } elseif ($mock_openssl_random_pseudo_bytes_to_exception) {
+        throw new Exception();
     }
 
     return \openssl_random_pseudo_bytes($length);
@@ -174,8 +176,8 @@ function openssl_cipher_iv_length(string $method)
 }
 
 namespace Platine\Security\Hash;
-
-$mock_password_hash_to_false = false;
+use Exception;
+$mock_password_hash_to_exception = false;
 $mock_password_hash_to_value = false;
 
 $mock_password_verify_to_false = false;
@@ -183,13 +185,13 @@ $mock_password_verify_to_true = false;
 
 function password_hash(string $password, $algo, array $options = [])
 {
-     global $mock_password_hash_to_false,
+     global $mock_password_hash_to_exception,
             $mock_password_hash_to_value;
 
     if ($mock_password_hash_to_value) {
         return 'my_hash';
-    } elseif ($mock_password_hash_to_false) {
-        return false;
+    } elseif ($mock_password_hash_to_exception) {
+        return throw new Exception();
     }
 
     return \password_hash($password, $algo, $options);

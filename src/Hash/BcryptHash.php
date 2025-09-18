@@ -48,6 +48,7 @@ declare(strict_types=1);
 namespace Platine\Security\Hash;
 
 use Platine\Security\Exception\HashException;
+use Exception;
 
 /**
  * @class BcryptHash
@@ -60,12 +61,13 @@ class BcryptHash implements HashInterface
      */
     public function hash(string $plain): string
     {
-        $hashed = password_hash(
-            $plain,
-            PASSWORD_BCRYPT,
-            ['cost' => 10]
-        );
-        if ($hashed === false) {
+        try {
+            $hashed = password_hash(
+                $plain,
+                PASSWORD_BCRYPT,
+                ['cost' => 10]
+            );
+        } catch (Exception $ex) {
             throw new HashException('Error occured when hashing');
         }
 

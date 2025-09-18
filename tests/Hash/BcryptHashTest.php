@@ -27,8 +27,8 @@ class BcryptHashTest extends PlatineTestCase
 
     public function testHashFailed(): void
     {
-        global $mock_password_hash_to_false;
-        $mock_password_hash_to_false = true;
+        global $mock_password_hash_to_exception;
+        $mock_password_hash_to_exception = true;
         $s = new BcryptHash();
         $this->expectException(HashException::class);
         $s->hash('my plain text');

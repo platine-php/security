@@ -48,6 +48,7 @@ declare(strict_types=1);
 namespace Platine\Security\Encryption;
 
 use Platine\Security\Exception\EncryptionException;
+use Exception;
 use RuntimeException;
 
 /**
@@ -101,7 +102,7 @@ class OpenSSL implements AdapterInterface
                 OPENSSL_ZERO_PADDING
             ];
 
-            if (!in_array($option, $options)) {
+            if (in_array($option, $options) === false) {
                 throw new EncryptionException(sprintf(
                     'Invalid OpenSSL option [%d] must be one of [%s]',
                     $option,
@@ -118,8 +119,9 @@ class OpenSSL implements AdapterInterface
      */
     public function createIV(int $size): string
     {
-        $bytes = openssl_random_pseudo_bytes($size);
-        if ($bytes === false) {
+        try {
+            $bytes = openssl_random_pseudo_bytes($size);
+        } catch (Exception $ex) {
             throw new EncryptionException(
                 'Error occured when creating initialization vector'
             );

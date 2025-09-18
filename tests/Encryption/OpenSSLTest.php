@@ -85,10 +85,10 @@ class OpenSSLTest extends PlatineTestCase
     public function testCreateIVFailed(): void
     {
         global $mock_extension_loaded_to_true,
-               $mock_openssl_random_pseudo_bytes_to_false;
+               $mock_openssl_random_pseudo_bytes_to_exception;
 
         $mock_extension_loaded_to_true = true;
-        $mock_openssl_random_pseudo_bytes_to_false = true;
+        $mock_openssl_random_pseudo_bytes_to_exception = true;
 
         $s = new OpenSSL();
 
