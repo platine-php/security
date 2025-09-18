@@ -65,7 +65,7 @@ class BcryptHash implements HashInterface
             $hashed = password_hash(
                 $plain,
                 PASSWORD_BCRYPT,
-                ['cost' => 10]
+                ['cost' => 12]
             );
         } catch (Exception $ex) {
             throw new HashException('Error occured when hashing');
