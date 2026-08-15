@@ -87,7 +87,7 @@ class Encryption
      * Create new instance
      * @param AdapterInterface|null $adapter
      */
-    public function __construct(AdapterInterface $adapter = null)
+    public function __construct(?AdapterInterface $adapter = null)
     {
         $this->adapter = $adapter ? $adapter : new OpenSSL([]);
         $this->initVectorSize = $this->adapter->getIVSize();
